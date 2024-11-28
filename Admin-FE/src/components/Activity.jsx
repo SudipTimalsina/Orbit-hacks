@@ -54,11 +54,11 @@ const Activity = ({ entries = [] }) => {
 
   return (
     <div className="activity" style={{ marginTop: "20px" }}>
-      {/* "Today's Activity" heading */}
-      <h2 className="text-3xl font-bold mb-4">Today's Activity</h2>
+      {/* Today's Activity Heading with larger and bold text */}
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-4xl font-bold">Today's Activity</h2>
 
-      {/* Search bar */}
-      <div className="flex justify-end mb-4">
+        {/* Search bar aligned in the same row */}
         <input
           type="text"
           className="p-2 border border-gray-300 rounded w-1/4"
