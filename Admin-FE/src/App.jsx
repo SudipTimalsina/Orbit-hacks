@@ -1,12 +1,14 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
+import Sidebar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Dashboard />
+    <div className="flex">
+      <Sidebar/>
+      <div className="flex-1 p-6 bg-gray-100">
+        <Dashboard />
+      </div>
     </div>
   );
 };

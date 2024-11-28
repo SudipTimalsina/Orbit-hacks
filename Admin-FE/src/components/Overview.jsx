@@ -15,7 +15,7 @@ const Dashboard = () => {
 
         <div className="flex flex-col items-center p-6 h-48 bg-green-500 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border border-gray-200 shadow-lg">
           <div className="flex items-center justify-center mb-4 text-white text-4xl">
-            <FaCar /> {/* Car Icon for Total Vehicles */}
+            <FaCar /> 
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">Total Vehicles</h3>
           <p className="text-white text-xl">30</p>
@@ -24,7 +24,7 @@ const Dashboard = () => {
 
         <div className="flex flex-col items-center p-6 h-48 bg-red-500 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border border-gray-200 shadow-lg">
           <div className="flex items-center justify-center mb-4 text-white text-4xl">
-            <FaCarAlt /> {/* Alternative Car Icon for Available Space */}
+            <FaCarAlt /> 
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">Available Space</h3>
           <p className="text-white text-xl">20</p>
