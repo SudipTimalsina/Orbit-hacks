@@ -1,5 +1,6 @@
 import React, { useState } from "react"; 
-import { FaHome, FaCar, FaChartLine, FaSignOutAlt } from "react-icons/fa"; // Reliable icons from FontAwesome
+import { FaHome, FaCar, FaChartLine, FaSignOutAlt } from "react-icons/fa";
+import { LuParkingCircle } from "react-icons/lu";
 import Modal from "./BookingModal";
 
 
@@ -18,8 +19,11 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-64 h-screen bg-gray-800 text-white p-4">
+    <div className="w-64 h-screen bg-cyprus text-white p-4">
+        <div className="flex gap-2 ">
+        <LuParkingCircle className="text-3xl"/>
       <div className="text-2xl font-semibold mb-8">We Park</div>
+      </div>
       <div className="space-y-4">
         <div className="flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg">
           <FaHome className="text-2xl" />
