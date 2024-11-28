@@ -1,12 +1,14 @@
-// import { useState } from 'react'
-// import './App.css'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
 
-
-  export default function App() {
+const App = () => {
     return (
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    )
-  }
+        <div>
+            <Navbar />
+            <Dashboard />
+        </div>
+    );
+};
 
+export default App;
