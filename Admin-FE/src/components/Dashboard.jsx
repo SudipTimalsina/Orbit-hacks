@@ -20,7 +20,8 @@ const Dashboard = () => {
   return (
     <div>
       <Overview totalSpace={50} vehicleCount={vehicleCount} />
-      <Activity entries={entries} />
+      <Activity data={entries} />
+
     </div>
   );
 };
