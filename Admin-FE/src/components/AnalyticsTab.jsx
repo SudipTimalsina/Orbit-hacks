@@ -31,58 +31,60 @@ const AnalyticsTab = () => {
   ]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
       {/* Cards Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <AnalyticsCard
           title="Total Vehicles"
           value={analyticsData.totalVehicles.toLocaleString()}
           icon={Car}
-          color="from-emerald-500 to-teal-700"
+          color="from-gray-700 to-gray-800"
         />
         <AnalyticsCard
           title="Total Bookings"
           value={analyticsData.totalBookings.toLocaleString()}
           icon={Calendar}
-          color="from-emerald-500 to-green-700"
+          color="from-gray-700 to-gray-800"
         />
         <AnalyticsCard
           title="Total Revenue"
-          value={`$${analyticsData.totalRevenue.toLocaleString()}`}
+          value={`रु ${analyticsData.totalRevenue.toLocaleString()}`} // Changed to Nepali Rupees
           icon={DollarSign}
-          color="from-emerald-500 to-lime-700"
+          color="from-gray-700 to-gray-800"
         />
       </div>
 
       {/* Line Chart Section for Daily Bookings and Revenue */}
       <motion.div
-        className="bg-gray-800/60 rounded-lg p-6 shadow-lg"
+        className="bg-gray-900 rounded-lg p-8 shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.25 }}
       >
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={500}>
           <LineChart data={dailyBookingData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" stroke="#D1D5DB" />
-            <YAxis yAxisId="left" stroke="#D1D5DB" />
-            <YAxis yAxisId="right" orientation="right" stroke="#D1D5DB" />
-            <Tooltip />
-            <Legend />
+            <CartesianGrid strokeDasharray="5 5" stroke="#d1d5db" />
+            <XAxis dataKey="name" stroke="#d1d5db" />
+            <YAxis yAxisId="left" stroke="#d1d5db" />
+            <YAxis yAxisId="right" orientation="right" stroke="#d1d5db" />
+            <Tooltip
+              contentStyle={{ backgroundColor: "#2d3748", color: "#fff" }}
+            />
+            <Legend wrapperStyle={{ color: "#fff" }} />
             <Line
               yAxisId="left"
               type="monotone"
               dataKey="bookings"
-              stroke="#10B981"
-              activeDot={{ r: 8 }}
+              stroke="#A78BFA" // Light purple for bookings
+              activeDot={{ r: 10 }} // Increased dot size
               name="Bookings"
             />
             <Line
               yAxisId="right"
               type="monotone"
               dataKey="revenue"
-              stroke="#3B82F6"
-              activeDot={{ r: 8 }}
+              stroke="#FBBF24" // Warm yellow for revenue
+              activeDot={{ r: 10 }} // Increased dot size
               name="Revenue"
             />
           </LineChart>
@@ -97,20 +99,20 @@ export default AnalyticsTab;
 // Analytics Card Component
 const AnalyticsCard = ({ title, value, icon: Icon, color }) => (
   <motion.div
-    className={`bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden relative ${color}`}
+    className={`bg-gray-800 rounded-lg p-8 shadow-lg overflow-hidden relative ${color}`}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
     <div className="flex justify-between items-center">
       <div className="z-10">
-        <p className="text-emerald-300 text-sm mb-1 font-semibold">{title}</p>
-        <h3 className="text-white text-3xl font-bold">{value}</h3>
+        <p className="text-white text-lg mb-2 font-semibold">{title}</p>
+        <h3 className="text-white text-4xl font-bold">{value}</h3>
       </div>
     </div>
-    <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-emerald-900 opacity-30" />
-    <div className="absolute -bottom-4 -right-4 text-emerald-800 opacity-50">
-      <Icon className="h-32 w-32" />
+    <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-transparent opacity-20" />
+    <div className="absolute -bottom-4 -right-4 text-white opacity-50">
+      <Icon className="h-40 w-40" />
     </div>
   </motion.div>
 );
