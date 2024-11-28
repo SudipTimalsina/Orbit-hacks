@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // If you're using React Router for navigation
 import vehicleImage from "./images/vehicle.png"; // Update with the correct path to the image
-import { UilEstate, UilSignout, UilMoon } from '@iconscout/react-unicons'; // Importing icons (you can use FontAwesome or other icons)
+import { UilEstate, UilSignout, UilMoon } from "@iconscout/react-unicons"; // Importing icons (you can use FontAwesome or other icons)
 
 const Navbar = () => {
   // State to toggle dark mode
@@ -14,7 +14,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`bg-white ${darkMode ? "dark" : ""} shadow-md min-h-screen w-64`}>
+    <nav
+      className={`bg-white ${
+        darkMode ? "dark" : ""
+      } shadow-md min-h-screen w-64`}
+    >
       {/* Logo Section */}
       <div className="flex items-center p-6">
         <div className="w-10 h-10">
@@ -28,7 +32,10 @@ const Navbar = () => {
         <ul className="nav-links space-y-6">
           {/* Dashboard Link */}
           <li>
-            <Link to="#" className="flex items-center space-x-3 p-4 hover:bg-gray-100">
+            <Link
+              to="#"
+              className="flex items-center space-x-3 p-4 hover:bg-gray-100"
+            >
               <UilEstate className="w-6 h-6" />
               <span className="link-name">Dashboard</span>
             </Link>
@@ -37,7 +44,10 @@ const Navbar = () => {
           {/* Logout Section */}
           <ul className="logout-mode space-y-6">
             <li>
-              <Link to="/logout" className="flex items-center space-x-3 p-4 hover:bg-gray-100">
+              <Link
+                to="/logout"
+                className="flex items-center space-x-3 p-4 hover:bg-gray-100"
+              >
                 <UilSignout className="w-6 h-6" />
                 <span className="link-name">Logout</span>
               </Link>
@@ -51,7 +61,9 @@ const Navbar = () => {
               <span className="link-name">Dark Mode</span>
             </div>
             <div
-              className={`mode-toggle ${darkMode ? "bg-indigo-600" : "bg-gray-200"} relative rounded-full w-10 h-5 cursor-pointer`}
+              className={`mode-toggle ${
+                darkMode ? "bg-indigo-600" : "bg-gray-200"
+              } relative rounded-full w-10 h-5 cursor-pointer`}
               onClick={handleDarkModeToggle}
             >
               <span
