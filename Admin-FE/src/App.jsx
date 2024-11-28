@@ -1,14 +1,14 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
-    return (
-        <div>
-            <Navbar />
-            <Dashboard />
-        </div>
-    );
+  return (
+    <div>
+      <Navbar />
+      <Dashboard />
+    </div>
+  );
 };
 
 export default App;
