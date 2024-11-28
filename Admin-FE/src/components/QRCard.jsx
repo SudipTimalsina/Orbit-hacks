@@ -36,17 +36,17 @@ const QRCardModal = ({ isOpen, closeModal, licenseNo, entryTime, exitTime }) => 
           <p><b>Rate: Rs. 50/hour</b></p>
           <p><b>Cost: Rs. {cost}</b></p>
         </div>
-        <p className="text-sm text-gray-600 text-center mb-4">
+        {/* <p className="text-sm text-gray-600 text-center mb-4">
           Choose your payment method:
-        </p>
-        <div className=" flex flex-col gap-2 justify-around mb-4">
-          <button
+        </p> */}
+        <div className=" flex flex-col gap-1 justify-around mb-4">
+          {/* <button
             className="underline bg-white-500 text-black px-4 py-2"
             onClick={closeModal}
           >
             Pay via Cash
-          </button>
-          <h1 className="flex justify-center">OR</h1>
+          </button> */}
+          {/* <h1 className="flex justify-center">OR</h1> */}
           <button
             className="underline bg-white-500 text-black px-4 py-2"
           >

@@ -53,7 +53,7 @@ const AnalyticsTab = () => {
       </div>
 
       <motion.div
-        className="bg-gray-900 rounded-lg p-8 shadow-lg"
+        className="min-h-15 bg-gray-900 rounded-lg p-8 shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.25 }}
