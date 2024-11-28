@@ -31,6 +31,7 @@ const AnalyticsTab = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      {/* Cards Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <AnalyticsCard
           title="Total Vehicles"
@@ -52,8 +53,9 @@ const AnalyticsTab = () => {
         />
       </div>
 
+      {/* Line Chart Section for Daily Bookings and Revenue */}
       <motion.div
-        className="min-h-15 bg-gray-900 rounded-lg p-8 shadow-lg"
+        className="min-h-15 bg-gray-900 rounded-lg p-6 shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.25 }}
@@ -73,7 +75,7 @@ const AnalyticsTab = () => {
               type="monotone"
               dataKey="bookings"
               stroke="#A78BFA"
-              activeDot={{ r: 10 }}
+              activeDot={{ r: 8 }}
               name="Bookings"
             />
             <Line
@@ -81,7 +83,7 @@ const AnalyticsTab = () => {
               type="monotone"
               dataKey="revenue"
               stroke="#FBBF24"
-              activeDot={{ r: 10 }}
+              activeDot={{ r: 8 }}
               name="Revenue"
             />
           </LineChart>
@@ -96,20 +98,30 @@ export default AnalyticsTab;
 // Analytics Card Component
 const AnalyticsCard = ({ title, value, icon: Icon, color }) => (
   <motion.div
-    className={`bg-gray-800 rounded-lg p-8 shadow-lg overflow-hidden relative ${color}`}
+    className={`bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden relative ${color} 
+      sm:p-8 lg:p-6`} // Adjust padding based on screen size
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
     <div className="flex justify-between items-center">
       <div className="z-10">
-        <p className="text-white text-lg mb-2 font-semibold">{title}</p>
-        <h3 className="text-white text-4xl font-bold">{value}</h3>
+        <p className="text-white text-sm sm:text-md mb-2 font-semibold">
+          {" "}
+          {/* Adjust font size */}
+          {title}
+        </p>
+        <h3 className="text-white text-xl sm:text-2xl font-bold">
+          {" "}
+          {/* Adjust font size */}
+          {value}
+        </h3>
       </div>
     </div>
     <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-transparent opacity-20" />
     <div className="absolute -bottom-4 -right-4 text-white opacity-50">
-      <Icon className="h-40 w-40" />
+      <Icon className="h-16 w-16 sm:h-24 sm:w-24 lg:h-28 lg:w-28" />{" "}
+      {/* Adjust icon size */}
     </div>
   </motion.div>
 );
