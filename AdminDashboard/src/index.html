@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Sidebar -->
+  <div class="flex h-screen">
+    <div class="w-64 bg-gray-800 text-white p-5">
+      <h2 class="text-2xl font-semibold mb-6">Admin Dashboard</h2>
+      <ul>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Dashboard</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Users</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Settings</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Reports</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Logout</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+      <!-- Top Navigation -->
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-semibold">Dashboard Overview</h1>
+        <div class="flex items-center space-x-4">
+          <img src="https://www.w3schools.com/w3images/avatar2.png" alt="User Avatar" class="w-8 h-8 rounded-full">
+          <span class="text-gray-700">Admin</span>
+        </div>
+      </div>
+
+      <!-- Dashboard Content -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">Total Users</h3>
+          <p class="text-4xl font-bold text-blue-600">1,245</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">Active Sessions</h3>
+          <p class="text-4xl font-bold text-green-600">980</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">New Signups</h3>
+          <p class="text-4xl font-bold text-yellow-600">320</p>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="bg-white p-6 mt-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-4">Recent Activity</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between items-center">
+            <span class="text-gray-700">User John Doe logged in</span>
+            <span class="text-gray-500 text-sm">2 mins ago</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <span class="text-gray-700">User Jane Smith registered</span>
+            <span class="text-gray-500 text-sm">5 mins ago</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <span class="text-gray-700">Server restarted</span>
+            <span class="text-gray-500 text-sm">15 mins ago</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
