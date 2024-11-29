@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const BookingForm = ({ selectedLocation }) => {
@@ -11,8 +11,24 @@ const BookingForm = ({ selectedLocation }) => {
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [price, setPrice] = useState(0);
+  const [count, setCount] = useState(0);
+  
+  useEffect( async()=>{
+      const response = await fetch('http://localhost:3001/api/vehicles/count'
+        , {
+          method: 'GET',
+          headers: {
+            'content-Type': 'application/json',
+          },
+        })
+        const json =  await response.json()
+        // console.log(json.count)
+        setCount(json.count)
+  },[]);
+  
 
-  const availableSpaces = 30;
+  var availableSpaces = 50 - count;
+  console.log(availableSpaces);
   const ratePerHour = 50; // 50 Nepali Rupees per hour
 
   const navigate = useNavigate(); // Initialize navigate
