@@ -172,7 +172,7 @@ export default function Map() {
       </div>
 
       {/* Booking Form Section */}
-      <div className="w-full max-w-md p-6 bg-gradient-to-br from-blue-50 to-indigo-100 shadow-2xl rounded-lg border border-blue-200 lg:ml-6 lg:mr-6 mt-6 lg:mt-0">
+      <div className="w-full max-w-md p-6 bg-gradient-to-br from-blue-50 to-indigo-100 shadow-2xl rounded-lg border border-blue-200 mt-2 lg:mt-0">
         {/* Show the selected location details */}
         {selectedLocation ? (
           <div>
@@ -185,11 +185,11 @@ export default function Map() {
           </div>
         ) : (
           // Carousel Component
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-center text-center m-28 ">
             <h2 className="text-4xl lg:text-6xl font-extrabold text-indigo-700 animate-glow mb-2">
               {carouselMessages[carouselIndex].title}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-sm text-gray-600">
               {carouselMessages[carouselIndex].description}
             </p>
             {/* Navigation Dots */}
