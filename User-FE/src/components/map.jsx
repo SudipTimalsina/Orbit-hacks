@@ -185,10 +185,12 @@ export default function Map() {
           </div>
         ) : (
           // Carousel Component
+          <div className="flex flex-col items-center text-center m-28 ">
           <div className="flex flex-col items-center text-center m-28">
             <h2 className="text-4xl lg:text-6xl font-extrabold text-indigo-700 animate-glow mb-2">
               {carouselMessages[carouselIndex].title}
             </h2>
+            <p className="text-sm text-gray-600">
             <p className="text-sm text-gray-600">
               {carouselMessages[carouselIndex].description}
             </p>
