@@ -1,77 +1,65 @@
 import React, { useState } from "react";
+import { FaHome, FaCar, FaChartLine, FaSignOutAlt } from "react-icons/fa";
+import { LuParkingCircle } from "react-icons/lu";
+import Modal from "./BookingModal";
+import Dashboard from "./Dashboard";
+import AnalyticsTab from "./AnalyticsTab";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Sidebar = () => {
+  const [activeTab, setActiveTab] = useState("home");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const changeTab = (tabName) => setActiveTab(tabName);
 
   return (
-    <nav className="bg-gradient-to-r from-purple-500 to-indigo-500 p-4 shadow-md">
-      <div className="container mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="text-white font-bold text-lg">
-          We Park
-        </a>
-
-        {/* Navigation Links (Desktop) */}
-        <div className="hidden md:flex space-x-6">
-          <a href="#" className="text-white hover:text-indigo-200 transition">
-            Home
-          </a>
-          <a href="#" className="text-white hover:text-indigo-200 transition">
-            Booking
-          </a>
-          <a href="#" className="text-white hover:text-indigo-200 transition">
-            Dashboard
-          </a>
-          <a href="#" className="text-white hover:text-indigo-200 transition">
-            Logout
-          </a>
+    <div className="flex">
+      <div className="w-64 h-screen bg-cyprus text-white p-4">
+        <div className="flex gap-2">
+          <LuParkingCircle className="text-3xl" />
+          <div className="text-2xl font-semibold mb-8">We Park</div>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="block md:hidden text-white focus:outline-none"
-          onClick={toggleMenu}
-        >
-          <svg
-            className="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div className="space-y-4">
+          <div
+            onClick={() => changeTab("home")}
+            className="flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
-        </button>
+            <FaHome className="text-2xl" />
+            <span className="text-lg">Home</span>
+          </div>
+
+          <div
+            onClick={openModal}
+            className="flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg"
+          >
+            <FaCar className="text-2xl" />
+            <span className="text-lg">Booking</span>
+          </div>
+
+          <div
+            onClick={() => changeTab("dashboard")}
+            className="flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg"
+          >
+            <FaChartLine className="text-2xl" />
+            <span className="text-lg">Dashboard</span>
+          </div>
+
+          <div className="flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg">
+            <FaSignOutAlt className="text-2xl" />
+            <span className="text-lg">Logout</span>
+          </div>
+        </div>
+        <Modal isOpen={isModalOpen} closeModal={closeModal} />
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden mt-2 ${isOpen ? "block" : "hidden"} space-y-2`}
-      >
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Home
-        </a>
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Booking
-        </a>
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Dashboard
-        </a>
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Logout
-        </a>
+      <div className="flex-1 p-4">
+        {activeTab === "home" && <Dashboard />}
+        {activeTab === "dashboard" && <AnalyticsTab />}{" "}
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+export default Sidebar;
