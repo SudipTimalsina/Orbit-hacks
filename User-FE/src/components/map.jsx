@@ -3,7 +3,10 @@ import leaflet from "leaflet";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useGeolocation from "../hooks/useGeolocation";
 import BookingForm from "./Booking";
-import "leaflet-routing-machine"; // Import Leaflet Routing Machine
+import "leaflet-routing-machine";
+import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch"; // Import leaflet-geosearch
+import 'leaflet/dist/leaflet.css'; // Import leaflet CSS
+import "leaflet-geosearch/dist/geosearch.css"; // Import geosearch CSS
 
 export default function Map() {
   const mapRef = useRef();
@@ -25,7 +28,7 @@ export default function Map() {
     {
       id: 1,
       name: "Milijuli Parking",
-      latitude: 27.689497, 
+      latitude: 27.689497,
       longitude: 85.303075,
     },
     {
@@ -37,7 +40,7 @@ export default function Map() {
     {
       id: 3,
       name: "Bhatbatini Parking",
-      latitude: 27.688677, 
+      latitude: 27.688677,
       longitude: 85.298928,
     },
     {
@@ -99,6 +102,29 @@ export default function Map() {
         setSelectedLocation({ id, name, latitude, longitude });
       });
     });
+
+    // Add search functionality using GeoSearchControl and OpenStreetMapProvider
+    const provider = new OpenStreetMapProvider();
+
+    const searchControl = new GeoSearchControl({
+      provider: provider,
+      style: "bar", // Style of the search bar (can be 'button' or 'bar')
+      showMarker: false, // Show marker at the search result location
+      showPopup: false, // Disable popup when location is found
+      autoClose: true, // Close search bar after selecting a location
+      keepResult: false, // Keep search result in the search bar
+      searchLabel: "Enter a location", // Placeholder text
+    });
+
+    // Add the search control to the map
+    mapRef.current.addControl(searchControl);
+
+    // Set the opacity of the search bar to 75%
+    const searchBarElement = document.querySelector(".leaflet-control-geosearch");
+    if (searchBarElement) {
+      searchBarElement.style.opacity = "0.75";
+    }
+
   }, [userPosition.latitude, userPosition.longitude]);
 
   useEffect(() => {
@@ -185,13 +211,11 @@ export default function Map() {
           </div>
         ) : (
           // Carousel Component
-          <div className="flex flex-col items-center text-center m-28 ">
           <div className="flex flex-col items-center text-center m-28">
             <h2 className="text-4xl lg:text-6xl font-extrabold text-indigo-700 animate-glow mb-2">
               {carouselMessages[carouselIndex].title}
             </h2>
-            <p className="text-sm text-gray-600">
-            <p className="text-sm text-gray-600">
+            <p className="text-lg text-gray-600">
               {carouselMessages[carouselIndex].description}
             </p>
             {/* Navigation Dots */}
