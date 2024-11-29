@@ -122,16 +122,23 @@ export default function Map() {
       </div>
 
       {/* Booking Form Section */}
-      {selectedLocation && (
-        <div className="w-full max-w-md p-6 bg-gradient-to-br from-blue-50 to-indigo-100 shadow-2xl rounded-lg border border-blue-200 lg:ml-6 lg:mr-6 mt-6 lg:mt-0">
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold text-indigo-700 text-center">
-              {selectedLocation.name}
-            </h2>
+      <div className="w-full max-w-md p-6 bg-gradient-to-br from-blue-50 to-indigo-100 shadow-2xl rounded-lg border border-blue-200 lg:ml-6 lg:mr-6 mt-6 lg:mt-0">
+        {/* Show the selected location details */}
+        {selectedLocation ? (
+          <div>
+            <div className="mb-4">
+              <h2 className="text-lg font-semibold text-indigo-700 text-center">
+                {selectedLocation.name}
+              </h2>
+            </div>
+            <BookingForm selectedLocation={selectedLocation} />
           </div>
-          <BookingForm onCancel={() => setSelectedLocation(null)} />
-        </div>
-      )}
+        ) : (
+          <div className="text-center text-indigo-700">
+            <p>Select a location on the map to see booking options.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
