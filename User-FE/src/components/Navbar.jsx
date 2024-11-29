@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import BookingData from "./BookingData";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize the navigate function
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const openBookingDetail = () => {
+    setIsBookingOpen(true);
+  };
+
+  const closeBookingDetail = () => {
+    setIsBookingOpen(false);
+  };
+
+  const handleLogout = () => {
+    // Clear the authentication token
+    localStorage.removeItem('authToken');
+
+    // Navigate to the login page
+    navigate('/login');
   };
 
   return (
     <nav className="bg-gradient-to-br from-blue-800 via-indigo-900 to-gray-900 p-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
-
         <a href="#" className="text-white font-bold text-lg">
           We Park
         </a>
@@ -19,19 +33,23 @@ const Navbar = () => {
           <a href="#" className="text-white hover:text-indigo-200 transition">
             Home
           </a>
-          <a href="#" className="text-white hover:text-indigo-200 transition">
+          <a
+            href="#"
+            className="text-white hover:text-indigo-200 transition"
+            onClick={openBookingDetail}
+          >
             Booking
           </a>
-          <a href="#" className="text-white hover:text-indigo-200 transition">
+          <button
+            onClick={handleLogout}
+            className="text-white"
+          >
             Logout
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="block md:hidden text-white focus:outline-none"
-          onClick={toggleMenu}
-        >
+        <button className="block md:hidden text-white focus:outline-none">
           <svg
             className="w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -49,21 +67,8 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden mt-2 ${isOpen ? "block" : "hidden"} space-y-2`}
-      >
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Home
-        </a>
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Booking
-        </a>
-
-        <a href="#" className="block text-white py-2 hover:bg-indigo-600 rounded">
-          Logout
-        </a>
-      </div>
+      {/* Booking Details Popup */}
+      <BookingData isOpen={isBookingOpen} closeDetail={closeBookingDetail} />
     </nav>
   );
 };
