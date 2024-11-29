@@ -10,11 +10,6 @@ const App = () => {
       <div className="flex-1 bg-gray-200">
         <Map />
       </div>
-
-      {/* Booking Form Section */}
-      <div className="w-full max-w-lg bg-white p-6 shadow-lg">
-        <Booking />
-      </div>
     </div>
   );
 };
