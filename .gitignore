@@ -25,3 +25,9 @@ dist-ssr
 
 */.env 
 
+*/.venv
+*/.idea
+*/.pt
+*/.mp4
+*.mp4
+*.pt
