@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const BookingData = ({ isOpen, closeDetail }) => {
   // Simulated booking data
@@ -9,7 +9,7 @@ const BookingData = ({ isOpen, closeDetail }) => {
       vehicleType: "Car",
       entryTime: "2024-11-27 10:00",
       exitTime: "2024-11-27 12:00",
-    }
+    },
   ];
 
   // Helper function to calculate parking duration

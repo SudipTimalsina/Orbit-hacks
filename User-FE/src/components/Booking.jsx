@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const BookingForm = ({ selectedLocation }) => {
   const [bookingDetails, setBookingDetails] = useState({
@@ -9,25 +10,31 @@ const BookingForm = ({ selectedLocation }) => {
     licensePlate: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
+  const [price, setPrice] = useState(0);
 
   const availableSpaces = 30;
+  const ratePerHour = 50; // 50 Nepali Rupees per hour
+
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleBookingFormSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Booking Details:", bookingDetails);
+    // Get booking details for calculation
+    const totalHours = parseInt(bookingDetails.hours) || 0;
+    const totalMinutes = parseInt(bookingDetails.minutes) || 0;
 
-    setSuccessMessage("Booking submitted successfully!");
+    // Convert total minutes to hours and add to hours
+    const totalTimeInHours = totalHours + totalMinutes / 60;
 
-    setBookingDetails({
-      vehicleType: "",
-      time: "",
-      hours: "",
-      minutes: "",
-      licensePlate: "",
+    // Calculate the price based on hours
+    const calculatedPrice = totalTimeInHours * ratePerHour;
+    setPrice(calculatedPrice);
+
+    // Navigate to payment page with price and booking details
+    navigate("/payment", {
+      state: { price: calculatedPrice, bookingDetails }, // Pass state with price and details
     });
-
-    setTimeout(() => setSuccessMessage(""), 3000);
   };
 
   return (
@@ -156,12 +163,24 @@ const BookingForm = ({ selectedLocation }) => {
           />
         </div>
 
-        {/* Submit Button */}
+        {/* Price Display */}
+        {price > 0 && (
+          <div className="mt-4 text-lg font-semibold text-indigo-700">
+            Total Price: NPR {price} (For {bookingDetails.hours} hours and{" "}
+            {bookingDetails.minutes} minutes)
+          </div>
+        )}
+
         <button
           type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
         >
-          Book Parking Spot
+          <span>Pay via Khalti</span>
+          <img
+            className="w-9 h-9"
+            src="./Naya_Khalti_Logo_icon_2018.png"
+            alt="Khalti Logo"
+          />
         </button>
       </form>
     </div>

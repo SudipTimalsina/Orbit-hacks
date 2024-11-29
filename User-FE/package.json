@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "axios": "^1.7.8",
+    "khalti-checkout-web": "^2.2.0",
     "leaflet": "^1.9.4",
     "leaflet-geosearch": "^4.0.0",
     "leaflet-routing-machine": "^3.2.12",
