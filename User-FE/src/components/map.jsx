@@ -3,17 +3,19 @@ import leaflet from "leaflet";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useGeolocation from "../hooks/useGeolocation";
 import BookingForm from "./Booking";
+import "leaflet-routing-machine"; // Import Leaflet Routing Machine
 
 export default function Map() {
   const mapRef = useRef();
   const userMarkerRef = useRef();
+  const routingControlRef = useRef(null); // To store the routing control instance
 
   const [userPosition, setUserPosition] = useLocalStorage("USER_MARKER", {
     latitude: 0,
     longitude: 0,
   });
 
-  const location = useGeolocation();
+  const location = useGeolocation(); // Get user's current location
 
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -23,8 +25,8 @@ export default function Map() {
     {
       id: 1,
       name: "Milijuli Parking",
-      latitude: 27.686319,
-      longitude: 85.304462,
+      latitude: 27.689497, 
+      longitude: 85.303075,
     },
     {
       id: 2,
@@ -35,14 +37,14 @@ export default function Map() {
     {
       id: 3,
       name: "Bhatbatini Parking",
-      latitude: 27.688319,
-      longitude: 85.306462,
+      latitude: 27.688677, 
+      longitude: 85.298928,
     },
     {
       id: 4,
       name: "Rajdhani Parking",
-      latitude: 27.689319,
-      longitude: 85.307462,
+      latitude: 27.693590,
+      longitude: 85.302131,
     },
   ];
 
@@ -120,6 +122,26 @@ export default function Map() {
     // Set map view to user's current location
     mapRef.current.setView([location.latitude, location.longitude]);
   }, [location, userPosition.latitude, userPosition.longitude]);
+
+  // Effect to show route when a location is selected
+  useEffect(() => {
+    if (selectedLocation && location.latitude && location.longitude) {
+      // Remove previous route if it exists
+      if (routingControlRef.current) {
+        mapRef.current.removeControl(routingControlRef.current);
+      }
+
+      // Create a new route from user's location to the selected parking spot
+      routingControlRef.current = leaflet.Routing.control({
+        waypoints: [
+          leaflet.latLng(location.latitude, location.longitude), // User's current location
+          leaflet.latLng(selectedLocation.latitude, selectedLocation.longitude), // Selected parking location
+        ],
+        routeWhileDragging: true, // Allow dragging the route
+        show: true, // Show the route on the map
+      }).addTo(mapRef.current);
+    }
+  }, [selectedLocation, location.latitude, location.longitude]);
 
   // Carousel autoplay effect
   useEffect(() => {
