@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const Vehicle = require("./models/Vehicle"); // Import the model
+const User = require("./models/User")
+const Booking = require("./models/Booking")
 const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -63,6 +65,63 @@ app.get("/api/vehicles/count", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+app.post('/users', async (req, res) => {
+  try {
+    const { Name, Email, license_number, vehicle_type } = req.body;
+
+    // Create a new user instance
+    const newUser = new User({
+      Name,
+      Email,
+      license_number,
+      vehicle_type,
+    });
+
+    // Save the user to the database
+    const savedUser = await newUser.save();
+
+    res.status(201).json({ message: 'User created successfully', user: savedUser });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create user', details: err.message });
+  }
+});
+
+
+app.post('/booking', async (req, res) => {
+  try {
+    const { Email, vehicle_type, booking_time_start, booking_duration } = req.body;
+
+    // Check if the email exists in the User schema
+    const userExists = await User.findOne({ Email });
+    if (!userExists) {
+      return res.status(404).json({ error: 'Email not found in User records' });
+    }
+
+    // Generate a random unique booking_id
+    const booking_id = Math.floor(100000 + Math.random() * 900000); // Random 6-digit number
+
+    // Create a new booking instance
+    const newBooking = new Booking({
+      Email,
+      vehicle_type,
+      booking_id,
+      booking_time_start,
+      booking_duration,
+    });
+
+    // Save the booking to the database
+    const savedBooking = await newBooking.save();
+
+    res.status(201).json({ message: 'Booking created successfully', booking: savedBooking });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create booking', details: err.message });
+  }
+});
+
+
+
 
 // Socket.IO setup
 io.on("connection", async(socket) => {
