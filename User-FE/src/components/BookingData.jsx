@@ -4,8 +4,8 @@ const BookingData = ({ isOpen, closeDetail }) => {
   // Simulated booking data
   const bookings = [
     {
-      userName: "John Doe",
-      licenseNo: "ABC123",
+      userName: "Ram Bahadur",
+      licenseNo: "BAB 1434",
       vehicleType: "Car",
       entryTime: "2024-11-27 10:00",
       exitTime: "2024-11-27 12:00",
@@ -28,7 +28,7 @@ const BookingData = ({ isOpen, closeDetail }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center text-black justify-center  "
       style={{ zIndex: 1000 }}
     >
       <div className="bg-white w-3/4 md:w-1/2 lg:w-1/3 rounded-lg shadow-lg p-6 relative">

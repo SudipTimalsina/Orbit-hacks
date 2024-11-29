@@ -24,6 +24,9 @@ export default {
           "100%": { textShadow: "0 0 5px rgba(255, 255, 255, 0.7)" },
         },
       },
+      colors: {
+        cyprus: "#022D41",
+      },
     },
   },
   plugins: [],

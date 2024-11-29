@@ -110,8 +110,6 @@ const Activity = () => {
           )}
         </tbody>
       </table>
-
-      {/* Modal for QR Card */}
       <QRCardModal
         isOpen={isModalOpen}
         closeModal={closeModal}

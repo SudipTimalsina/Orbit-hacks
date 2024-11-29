@@ -5,11 +5,41 @@ const Modal = ({ isOpen, closeModal }) => {
 
   // Static booking data (this would represent data coming from the client side)
   const bookings = [
-    { name: "John Doe", Liscense:"SDVHSYS12", time: "10:00 AM", vehicleType: "Car", parkingTime: "1 hour" },
-    { name: "Jane Smith", Liscense:"DGJHGSD23", time: "11:30 AM", vehicleType: "Bike", parkingTime: "2 hours" },
-    { name: "Tom Johnson", Liscense:"HDHJD89", time: "2:00 PM", vehicleType: "Truck", parkingTime: "1 hour" },
-    { name: "Emily Clark", Liscense:"SBDJSD12", time: "3:30 PM", vehicleType: "Car", parkingTime: "4 hours" },
-    { name: "Sarah Lee",Liscense:"DHGJGD23", time: "5:00 PM", vehicleType: "Bike", parkingTime: "3 hours" },
+    {
+      name: "Ram Bahadur",
+      Liscense: "BAB 1434",
+      time: "10:00 AM",
+      vehicleType: "Car",
+      parkingTime: "1 hour",
+    },
+    {
+      name: "Hari Prasad",
+      Liscense: "BAB 1789",
+      time: "11:30 AM",
+      vehicleType: "Bike",
+      parkingTime: "2 hours",
+    },
+    {
+      name: "Tim jung",
+      Liscense: "BDE 5959",
+      time: "2:00 PM",
+      vehicleType: "Truck",
+      parkingTime: "1 hour",
+    },
+    {
+      name: "Emily Clark",
+      Liscense: "BDE 8998",
+      time: "3:30 PM",
+      vehicleType: "Car",
+      parkingTime: "4 hours",
+    },
+    {
+      name: "Sarah Lee",
+      Liscense: "BAA 7767",
+      time: "5:00 PM",
+      vehicleType: "Bike",
+      parkingTime: "3 hours",
+    },
   ];
 
   return (
@@ -28,8 +58,6 @@ const Modal = ({ isOpen, closeModal }) => {
                 <th className="px-4 py-2 text-left">Time</th>
                 <th className="px-4 py-2 text-left">Vehicle Type</th>
                 <th className="px-4 py-2 text-left">Parking Duration</th>
-
-
               </tr>
             </thead>
             <tbody>
@@ -40,8 +68,6 @@ const Modal = ({ isOpen, closeModal }) => {
                   <td className="px-4 py-2">{booking.time}</td>
                   <td className="px-4 py-2">{booking.vehicleType}</td>
                   <td className="px-4 py-2">{booking.parkingTime}</td>
-                  
-                  
                 </tr>
               ))}
             </tbody>

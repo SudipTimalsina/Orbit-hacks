@@ -16,17 +16,17 @@ const Navbar = () => {
 
   const handleLogout = () => {
     // Clear the authentication token
-    localStorage.removeItem('authToken');
+    localStorage.removeItem("authToken");
 
     // Navigate to the login page
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
-    <nav className="bg-gradient-to-br from-blue-800 via-indigo-900 to-gray-900 p-4 shadow-md">
+    <nav className="bg-cyprus text-white p-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
         <a href="#" className="text-white font-bold text-lg">
-          We Park
+          Parking Sathi
         </a>
 
         <div className="hidden md:flex space-x-6">
@@ -40,10 +40,7 @@ const Navbar = () => {
           >
             Booking
           </a>
-          <button
-            onClick={handleLogout}
-            className="text-white"
-          >
+          <button onClick={handleLogout} className="text-white">
             Logout
           </button>
         </div>
