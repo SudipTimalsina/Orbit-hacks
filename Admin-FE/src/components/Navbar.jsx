@@ -19,7 +19,7 @@ const Sidebar = () => {
       <div className="w-64 h-screen bg-cyprus text-white p-4">
         <div className="flex gap-2">
           <LuParkingCircle className="text-3xl" />
-          <div className="text-2xl font-semibold mb-8">We Park</div>
+          <div className="text-2xl font-semibold mb-8">Parking Sathi</div>
         </div>
         <div className="space-y-4">
           <div
